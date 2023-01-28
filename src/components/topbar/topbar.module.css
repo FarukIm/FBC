@@ -1,0 +1,70 @@
+.topbarContainer {
+	width: full;
+	height: 4rem;
+	background-color: #000000;
+	color: #ffffff;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: center;
+}
+
+.topbarItemsContainer {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.logoContainer {
+	height: 100%;
+	width: 130px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	float: left;
+}
+
+.letter {
+	height: 30px;
+	width: 30px;
+	font-size: 1.5rem;
+	background-color: #ffffff;
+	color: #000000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+}
+
+.searchBarContainer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.searchBar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 700px;
+	height: 2rem;
+	font-size: 1rem;
+	border: 3px #2e2e2e solid;
+	border-radius: 0.75rem;
+	padding-left: 1rem;
+}
+
+.left {
+	padding-left: 0.75rem;
+	display: flex;
+	justify-content: flex-start;
+	width: 50%;
+}
+
+.right {
+	padding-right: 0.75rem;
+	display: flex;
+	justify-content: flex-end;
+	width: 50%;
+}
