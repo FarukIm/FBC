@@ -11,15 +11,13 @@ import styles from "./homepage.module.css";
 
 const HomePage = () => {
 	const [data, setData] = useState([]);
-	const lorem =
-		"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ";
 	const dataToCards = () => {
-		data.map((item) => (
+		return data.map((item) => (
 			<Card
-				key={data.id}
-				title={data.title}
-				image={data.urlToImage}
-				description={data.description}
+				key={item.id}
+				title={item.title}
+				image={item.urlToImage}
+				description={item.description}
 			></Card>
 		));
 	};
@@ -38,16 +36,7 @@ const HomePage = () => {
 		<>
 			<Topbar />
 			<div className={styles.bodyContainer}>
-				<div className={styles.cardsContainer}>
-					{data.map((item) => (
-						<Card
-							key={item.id}
-							title={item.title}
-							image={item.urlToImage}
-							description={item.description}
-						></Card>
-					))}
-				</div>
+				<div className={styles.cardsContainer}>{dataToCards()}</div>
 			</div>
 		</>
 	);
