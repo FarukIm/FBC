@@ -68,3 +68,16 @@
 	justify-content: flex-end;
 	width: 50%;
 }
+
+.formContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.searchSubmit {
+	width: 2rem;
+	height: 2rem;
+	border: 3px #2e2e2e solid;
+	border-radius: 0.75rem;
+}

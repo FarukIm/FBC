@@ -1,18 +1,23 @@
+//libs
 import React from "react";
+//styles
 import styles from "./topbar.module.css";
+//assets
+import searchIcon from "../../assets/searchIcon";
 
 const searchBar = () => {
 	return (
-		<div>
+		<form className={styles.formContainer}>
 			<input
 				className={styles.searchBar}
 				type='search'
-				onChange={(e) => {
-					console.log(e);
-				}}
+				on
 				placeholder='Search...'
 			/>
-		</div>
+			<button className={styles.searchSubmit} type='submit'>
+				{searchIcon()}
+			</button>
+		</form>
 	);
 };
 
