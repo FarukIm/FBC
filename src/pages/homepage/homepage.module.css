@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	width: 100%;
 }
 
@@ -11,4 +12,18 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+}
+
+.loadMore {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 2rem 0;
+	font-weight: 600;
+	color: rgb(77, 155, 245);
+}
+
+.loadMore:hover {
+	cursor: pointer;
 }
