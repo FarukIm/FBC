@@ -1,6 +1,8 @@
 //libs
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { articlesActions } from "../../store/articlesSlice";
 //components
 import Topbar from "../../components/topbar";
 import Card from "../../components/card";
@@ -12,10 +14,11 @@ import styles from "./homepage.module.css";
 import loadIcon from "../../assets/loadIcon";
 
 const HomePage = () => {
-	const [data, setData] = useState([]);
-	const [totalResults, setTotalResults] = useState(0);
+	let firstLoad = true;
+	const dispatch = useDispatch();
+	const articles = useSelector((state) => state.articlesList);
 	const dataToCards = () => {
-		return data.map((item) => (
+		return articles.map((item) => (
 			<Card
 				key={item.id}
 				title={item.title}
@@ -27,9 +30,8 @@ const HomePage = () => {
 
 	const getData = async () => {
 		const temp = await getTopHeadLines();
-		setTotalResults(temp.totalResults);
-		if (data.length === 0) setData(temp.articles);
-		else setData(data.concat(temp.articles));
+
+		dispatch(articlesActions.addArticles(temp.articles));
 	};
 
 	useEffect(() => {
@@ -47,7 +49,7 @@ const HomePage = () => {
 						console.log("click");
 					}}
 				>
-					{totalResults > data.length && (
+					{articles.length && (
 						<>
 							{loadIcon()}
 							Load more articles
