@@ -19,7 +19,10 @@ const articlesSlice = createSlice({
 	reducers: {
 		addArticles(state, action) {
 			const newArticles = action.payload;
-			if (newArticles.totalResults !== state.totalArticles) {
+			if (
+				newArticles.totalResults !== state.totalArticles &&
+				state.page === 1
+			) {
 				state.totalArticles = newArticles.totalResults;
 				state.articlesList = newArticles;
 				return;
@@ -37,12 +40,12 @@ const articlesSlice = createSlice({
 		},
 
 		initializeTotalArticles(state, action) {
-			if (state.totalArticles === 0) {
-				state.totalArticles = action.payload;
-			}
+			state.totalArticles = action.payload;
 		},
 		addPage(state, action) {
-			state.page = state.page + 1;
+			if (state.articlesList.length < state.totalArticles) {
+				state.page = state.page + 1;
+			}
 		},
 		addSearchTerm(state, action) {
 			state.searchTerm = action.payload;

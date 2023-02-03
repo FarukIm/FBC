@@ -1,0 +1,20 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #00000033;
+}
+
+.modalContent {
+	width: 70%;
+	max-width: 900px;
+	min-width: 300px;
+	background-color: #dadada;
+	padding: 1rem;
+	height: 60%;
+}

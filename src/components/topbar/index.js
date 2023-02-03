@@ -1,6 +1,6 @@
 //libs
 import React from "react";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import { articlesActions } from "../../store/articlesSlice";
 //styles
 import styles from "./topbar.module.css";
@@ -26,6 +26,7 @@ const Topbar = () => {
 					type='submit'
 					onClick={(event) => {
 						event.preventDefault();
+						dispatch(articlesActions.setFirstPage());
 						dispatch(articlesActions.addSearchTerm(tempSearch));
 					}}
 				>
@@ -40,7 +41,10 @@ const Topbar = () => {
 				<div className={styles.left}>
 					<div
 						className={styles.logoContainer}
-						onClick={() => dispatch(articlesActions.removeSearch())}
+						onClick={() => {
+							dispatch(articlesActions.setFirstPage());
+							dispatch(articlesActions.removeSearch());
+						}}
 					>
 						<span className={styles.letter}>F</span>
 						<span className={styles.letter}>B</span>
