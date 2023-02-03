@@ -14,13 +14,19 @@ const articlesSlice = createSlice({
 		totalArticles: 0,
 		page: 1,
 		searchTerm: "",
-		isSearch: false,
+		oldSearch: "",
 	},
 	reducers: {
 		addArticles(state, action) {
 			const newArticles = action.payload;
-			if (state.isSearch) {
+			if (newArticles.totalResults !== state.totalArticles) {
+				state.totalArticles = newArticles.totalResults;
 				state.articlesList = newArticles;
+				return;
+			}
+			if (state.searchTerm !== state.oldSearch && state.page === 1) {
+				state.articlesList = newArticles;
+				state.oldSearch = state.searchTerm;
 				return;
 			} else if (newArticles && state.articlesList.length > 0) {
 				for (let i = 0; i < newArticles.length; i++) {
@@ -41,8 +47,12 @@ const articlesSlice = createSlice({
 		addSearchTerm(state, action) {
 			state.searchTerm = action.payload;
 		},
-		startSearch(state, action) {
-			state.isSearch = action.payload;
+		updateOldSearch(state, action) {
+			state.oldSearch = action.payload;
+		},
+		removeSearch(state, action) {
+			state.oldSearch = "";
+			state.searchTerm = "";
 		},
 		setFirstPage(state, action) {
 			state.page = 1;

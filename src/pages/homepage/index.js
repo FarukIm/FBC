@@ -17,7 +17,6 @@ const HomePage = () => {
 	const dispatch = useDispatch();
 	const articles = useSelector((state) => state.articlesList);
 	const searchTerm = useSelector((state) => state.searchTerm);
-	const isSearch = useSelector((state) => state.isSearch);
 	const page = useSelector((state) => state.page);
 	const totalArticles = useSelector((state) => state.totalArticles);
 	const dataToCards = () => {
@@ -32,7 +31,7 @@ const HomePage = () => {
 	};
 
 	const getData = async () => {
-		if (isSearch === false) {
+		if (searchTerm.length === 0) {
 			const temp = await getTopHeadlines(page);
 			dispatch(articlesActions.addArticles(temp.articles));
 			dispatch(articlesActions.initializeTotalArticles(temp.totalResults));
@@ -50,18 +49,14 @@ const HomePage = () => {
 	useEffect(() => {
 		dispatch(articlesActions.setFirstPage());
 		getData();
-	}, [isSearch]);
+	}, [searchTerm]);
 
 	return (
 		<>
 			<Topbar />
 			<div className={styles.bodyContainer}>
-				{articles.length !== totalArticles && (
-					<>
-						{loadIcon()}
-						Load more articles
-					</>
-				)}
+				articles on site:
+				{articles.length}
 				<div className={styles.cardsContainer}>{dataToCards()}</div>
 				<div
 					className={styles.loadMore}

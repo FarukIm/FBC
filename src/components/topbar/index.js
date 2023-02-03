@@ -2,7 +2,6 @@
 import React from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 import { articlesActions } from "../../store/articlesSlice";
-import { getSearch } from "../../api/news";
 //styles
 import styles from "./topbar.module.css";
 //assets
@@ -10,7 +9,7 @@ import searchIcon from "../../assets/searchIcon";
 
 const Topbar = () => {
 	const dispatch = useDispatch();
-
+	let tempSearch = "";
 	const searchBar = () => {
 		return (
 			<form className={styles.formContainer}>
@@ -19,7 +18,7 @@ const Topbar = () => {
 					type='search'
 					placeholder='Search...'
 					onChange={(event) => {
-						dispatch(articlesActions.addSearchTerm(event.target.value));
+						tempSearch = event.target.value;
 					}}
 				/>
 				<button
@@ -27,7 +26,7 @@ const Topbar = () => {
 					type='submit'
 					onClick={(event) => {
 						event.preventDefault();
-						dispatch(articlesActions.startSearch(true));
+						dispatch(articlesActions.addSearchTerm(tempSearch));
 					}}
 				>
 					{searchIcon()}
@@ -39,7 +38,10 @@ const Topbar = () => {
 		<div className={styles.topbarContainer}>
 			<div className={styles.topbarItemsContainer}>
 				<div className={styles.left}>
-					<div className={styles.logoContainer}>
+					<div
+						className={styles.logoContainer}
+						onClick={() => dispatch(articlesActions.removeSearch())}
+					>
 						<span className={styles.letter}>F</span>
 						<span className={styles.letter}>B</span>
 						<span className={styles.letter}>C</span>
