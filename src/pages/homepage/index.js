@@ -8,6 +8,7 @@ import Card from "../../components/card";
 import Modal from "../../components/modal";
 //api
 import { getSearch, getTopHeadlines } from "../../api/news";
+import { response } from "../../api/dummydata/results";
 //style
 import styles from "./homepage.module.css";
 //assets
@@ -20,7 +21,8 @@ const HomePage = () => {
 	const page = useSelector((state) => state.articles.page);
 	const totalArticles = useSelector((state) => state.articles.totalArticles);
 	const dataToCards = () => {
-		return articles.map((item) => <Card article={item}></Card>);
+		return response.articles.map((item) => <Card article={item}></Card>);
+		// return articles.map((item) => <Card article={item}></Card>);
 	};
 
 	const getData = async () => {
@@ -36,12 +38,12 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
-		getData();
+		// getData();
 	}, [page]);
 
 	useEffect(() => {
-		dispatch(articlesActions.setFirstPage());
-		getData();
+		// dispatch(articlesActions.setFirstPage());
+		// getData();
 	}, [searchTerm]);
 
 	return (

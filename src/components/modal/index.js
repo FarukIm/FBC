@@ -8,9 +8,6 @@ const Modal = () => {
 	const dispatch = useDispatch();
 	const article = useSelector((state) => state.selectedArticle.article);
 	const show = useSelector((state) => state.selectedArticle.isOpen);
-	console.log(article);
-
-	useEffect(() => {}, [article]);
 
 	if (!show) {
 		return null;
@@ -38,7 +35,7 @@ const Modal = () => {
 				<div className={styles.modalBody}>
 					<div className={styles.image}>{article.urlToImage}</div>
 					<div className={styles.published}>{article.published}</div>
-					<div className={styles.source}>{article.source}</div>
+					<div className={styles.source}>{article.source.name}</div>
 					<div className={styles.author}>{article.author}</div>
 					<div className={styles.description}>{article.description}</div>
 					<div className={styles.content}>{article.content}</div>

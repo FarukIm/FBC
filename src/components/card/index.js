@@ -1,12 +1,13 @@
 //libs
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectedArticleActions } from "../../store/selectedArticleSlice";
 //style
 import styles from "./card.module.css";
 
 const Card = ({ article }) => {
 	const dispatch = useDispatch();
+	const blah = useSelector((state) => state.selectedArticle.article);
 	return (
 		<div className={styles.cardContainer}>
 			<div className={styles.imageContainer}>
@@ -23,7 +24,6 @@ const Card = ({ article }) => {
 					onClick={() => {
 						dispatch(selectedArticleActions.setArticle(article));
 						dispatch(selectedArticleActions.openArticle());
-						console.log(article);
 					}}
 				>
 					..read more
