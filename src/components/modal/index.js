@@ -19,26 +19,48 @@ const Modal = () => {
 				dispatch(selectedArticleActions.closeArticle());
 			}}
 		>
-			<div className={styles.modalContent}>
-				<div className={styles.modalHeader}>
-					<div className={styles.title}>{article.title}</div>
-					<div
-						className={styles.closeModal}
-						onClick={() => {
-							dispatch(selectedArticleActions.closeArticle());
-						}}
-					>
-						{" "}
-						Close
-					</div>
-				</div>
+			<div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+				<button
+					className={styles.closeModal}
+					onClick={() => {
+						dispatch(selectedArticleActions.closeArticle());
+					}}
+				>
+					X
+				</button>
+
+				<h1 className={styles.title}>{article.title}</h1>
+
 				<div className={styles.modalBody}>
-					<div className={styles.image}>{article.urlToImage}</div>
-					<div className={styles.published}>{article.published}</div>
-					<div className={styles.source}>{article.source.name}</div>
-					<div className={styles.author}>{article.author}</div>
-					<div className={styles.description}>{article.description}</div>
-					<div className={styles.content}>{article.content}</div>
+					<div className={styles.image}>
+						<img
+							src={article.urlToImage}
+							height='100%'
+							width='100%'
+							alt='No image available'
+						/>
+					</div>
+
+					<h3 className={styles.description}>
+						{article.description !== null
+							? article.description
+							: "No article description"}
+					</h3>
+
+					<div className={styles.metaData}>
+						<div>
+							Published on: {article.publishedAt.replace("T", " ").slice(0, -1)}
+						</div>
+						<div>Source: {article.source.name}</div>
+						<div>
+							Author:{" "}
+							{article.author !== null ? article.author : "No author specified"}
+						</div>
+					</div>
+
+					<div className={styles.content}>
+						{article.content !== null ? article.content : "No article content"}
+					</div>
 				</div>
 			</div>
 		</div>
