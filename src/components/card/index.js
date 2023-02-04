@@ -11,11 +11,7 @@ const Card = ({ article }) => {
 	return (
 		<div className={styles.cardContainer}>
 			<div className={styles.imageContainer}>
-				<img
-					src={article.urlToImage}
-					alt='No image available'
-					className={styles.image}
-				/>
+				<img src={article.urlToImage} className={styles.image} alt='FBC' />
 			</div>
 			<div className={styles.title}>{article.title}</div>
 			<div className={styles.descriptionContainer}>

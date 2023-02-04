@@ -32,14 +32,7 @@ const Modal = () => {
 				<h1 className={styles.title}>{article.title}</h1>
 
 				<div className={styles.modalBody}>
-					<div className={styles.image}>
-						<img
-							src={article.urlToImage}
-							height='100%'
-							width='100%'
-							alt='No image available'
-						/>
-					</div>
+					<img src={article.urlToImage} className={styles.image} alt='FBC' />
 
 					<h3 className={styles.description}>
 						{article.description !== null
