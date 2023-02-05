@@ -23,6 +23,7 @@
 	justify-content: space-evenly;
 	align-items: center;
 	float: left;
+	cursor: pointer;
 }
 
 .letter {
@@ -44,6 +45,7 @@
 }
 
 .searchBar {
+	outline: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;

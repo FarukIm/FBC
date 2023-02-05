@@ -1,6 +1,7 @@
 //libs
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+//state
 import { articlesActions } from "../../store/articlesSlice";
 //components
 import Topbar from "../../components/topbar";
@@ -20,6 +21,7 @@ const HomePage = () => {
 	const searchTerm = useSelector((state) => state.articles.searchTerm);
 	const page = useSelector((state) => state.articles.page);
 	const totalArticles = useSelector((state) => state.articles.totalArticles);
+	const sort = useSelector((state) => state.articles.sort);
 	const dataToCards = () => {
 		return response.articles.map((item) => <Card article={item}></Card>);
 		// return articles.map((item) => <Card article={item}></Card>);
@@ -31,7 +33,7 @@ const HomePage = () => {
 			dispatch(articlesActions.addArticles(temp.articles));
 			dispatch(articlesActions.initializeTotalArticles(temp.totalResults));
 		} else {
-			const _temp = await getSearch(searchTerm, "", page);
+			const _temp = await getSearch(searchTerm, sort, page);
 			dispatch(articlesActions.addArticles(_temp.articles));
 			dispatch(articlesActions.initializeTotalArticles(_temp.totalResults));
 		}
@@ -42,17 +44,20 @@ const HomePage = () => {
 	}, [page]);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		// dispatch(articlesActions.setFirstPage());
 		// getData();
-	}, [searchTerm]);
+	}, [searchTerm, sort]);
 
 	return (
 		<>
 			<Topbar />
 			<Modal />
 			<div className={styles.bodyContainer}>
-				articles on site:
-				{articles.length}
+				<div className={styles.introText}>
+					{" "}
+					Welcome to the FBC! The Faruk Broadcast Channel
+				</div>
 				<div className={styles.cardsContainer}>{dataToCards()}</div>
 				{articles.length < totalArticles && (
 					<div

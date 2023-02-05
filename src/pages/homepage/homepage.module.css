@@ -28,3 +28,14 @@
 .loadMore:hover {
 	cursor: pointer;
 }
+
+.introText {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-top: 1rem;
+	font-weight: 600;
+	font-size: 1.25rem;
+}

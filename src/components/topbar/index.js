@@ -2,6 +2,8 @@
 import React from "react";
 import { useDispatch, connect } from "react-redux";
 import { articlesActions } from "../../store/articlesSlice";
+//components
+import Dropdown from "../dropdown";
 //styles
 import styles from "./topbar.module.css";
 //assets
@@ -12,7 +14,13 @@ const Topbar = () => {
 	let tempSearch = "";
 	const searchBar = () => {
 		return (
-			<form className={styles.formContainer}>
+			<form
+				className={styles.formContainer}
+				onSubmit={(event) => {
+					event.preventDefault();
+					event.target.reset();
+				}}
+			>
 				<input
 					className={styles.searchBar}
 					type='search'
@@ -25,7 +33,6 @@ const Topbar = () => {
 					className={styles.searchSubmit}
 					type='submit'
 					onClick={(event) => {
-						event.preventDefault();
 						dispatch(articlesActions.setFirstPage());
 						dispatch(articlesActions.addSearchTerm(tempSearch));
 					}}
@@ -42,6 +49,7 @@ const Topbar = () => {
 					<div
 						className={styles.logoContainer}
 						onClick={() => {
+							window.scrollTo(0, 0);
 							dispatch(articlesActions.setFirstPage());
 							dispatch(articlesActions.removeSearch());
 						}}
@@ -53,7 +61,9 @@ const Topbar = () => {
 				</div>
 				<div className={styles.right}>
 					<div className={styles.searchBarContainer}>
-						<div className={styles.sortContainer}>Sort</div>
+						<div className={styles.sortContainer}>
+							<Dropdown />
+						</div>
 						{searchBar()}
 					</div>
 				</div>

@@ -15,6 +15,8 @@ const articlesSlice = createSlice({
 		page: 1,
 		searchTerm: "",
 		oldSearch: "",
+		sort: "publishedAt",
+		sortOpen: false,
 	},
 	reducers: {
 		addArticles(state, action) {
@@ -59,6 +61,18 @@ const articlesSlice = createSlice({
 		},
 		setFirstPage(state, action) {
 			state.page = 1;
+		},
+		sortPopular(state, action) {
+			state.sort = "popularity";
+		},
+		sortRelevant(state, action) {
+			state.sort = "relevancy";
+		},
+		sortPublishedAt(state, action) {
+			state.sort = "publishedAt";
+		},
+		toggleSortOpen(state, action) {
+			state.sortOpen = action.payload;
 		},
 	},
 });
