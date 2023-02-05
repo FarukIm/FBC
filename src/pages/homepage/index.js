@@ -9,7 +9,6 @@ import Card from "../../components/card";
 import Modal from "../../components/modal";
 //api
 import { getSearch, getTopHeadlines } from "../../api/news";
-import { response } from "../../api/dummydata/results";
 //style
 import styles from "./homepage.module.css";
 //assets
@@ -25,7 +24,6 @@ const HomePage = () => {
 	const sortOpen = useSelector((state) => state.articles.sortOpen);
 
 	const dataToCards = () => {
-		//return response.articles.map((item) => <Card article={item}></Card>);
 		return articles.map((item) => <Card article={item}></Card>);
 	};
 

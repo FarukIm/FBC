@@ -1,6 +1,6 @@
 //libs
 import React from "react";
-import { useDispatch, connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { articlesActions } from "../../store/articlesSlice";
 //components
 import Dropdown from "../dropdown";
@@ -74,4 +74,4 @@ const Topbar = () => {
 	);
 };
 
-export default connect()(Topbar);
+export default Topbar;
