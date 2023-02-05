@@ -29,7 +29,7 @@ const Modal = () => {
 					X
 				</button>
 
-				<h1 className={styles.title}>{article.title}</h1>
+				<h1>{article.title}</h1>
 
 				<div className={styles.modalBody}>
 					<img src={article.urlToImage} className={styles.image} alt='FBC' />

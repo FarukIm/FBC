@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const isDuplicate = (arr1, arr2) => {
-	if (arr1.length !== arr2.length) return false;
-	for (let i = 0; i < arr2.length; i++) {
-		if (arr1[i].title === arr2[i].title) return true;
-	}
-};
-
 const articlesSlice = createSlice({
 	name: "articles",
 	initialState: {

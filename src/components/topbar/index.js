@@ -42,6 +42,7 @@ const Topbar = () => {
 			</form>
 		);
 	};
+
 	return (
 		<div className={styles.topbarContainer}>
 			<div className={styles.topbarItemsContainer}>
@@ -52,6 +53,7 @@ const Topbar = () => {
 							window.scrollTo(0, 0);
 							dispatch(articlesActions.setFirstPage());
 							dispatch(articlesActions.removeSearch());
+							dispatch(articlesActions.sortPublishedAt());
 						}}
 					>
 						<span className={styles.letter}>F</span>

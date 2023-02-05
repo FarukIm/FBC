@@ -22,9 +22,11 @@ const HomePage = () => {
 	const page = useSelector((state) => state.articles.page);
 	const totalArticles = useSelector((state) => state.articles.totalArticles);
 	const sort = useSelector((state) => state.articles.sort);
+	const sortOpen = useSelector((state) => state.articles.sortOpen);
+
 	const dataToCards = () => {
-		return response.articles.map((item) => <Card article={item}></Card>);
-		// return articles.map((item) => <Card article={item}></Card>);
+		//return response.articles.map((item) => <Card article={item}></Card>);
+		return articles.map((item) => <Card article={item}></Card>);
 	};
 
 	const getData = async () => {
@@ -40,17 +42,21 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
-		// getData();
+		getData();
 	}, [page]);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
-		// dispatch(articlesActions.setFirstPage());
-		// getData();
+		dispatch(articlesActions.setFirstPage());
+		getData();
 	}, [searchTerm, sort]);
 
 	return (
-		<>
+		<div
+			onClick={() => {
+				sortOpen && dispatch(articlesActions.toggleSortOpen(false));
+			}}
+		>
 			<Topbar />
 			<Modal />
 			<div className={styles.bodyContainer}>
@@ -73,7 +79,7 @@ const HomePage = () => {
 					</div>
 				)}
 			</div>
-		</>
+		</div>
 	);
 };
 
