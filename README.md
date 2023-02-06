@@ -1,4 +1,4 @@
-##The FBC (Faruk Broadcast Channel) is a website which enables you to see the top news in the US, as well as search articles about topics which interest you
+### The FBC (Faruk Broadcast Channel) is a website which enables you to see the top news in the US, as well as search articles about topics which interest you
 
 # How to use the project
 
